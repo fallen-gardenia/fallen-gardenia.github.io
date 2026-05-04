@@ -123,12 +123,9 @@ for f in "${files[@]}"; do
   fi
 done
 
-# --- TZ environment must be UTC so commit timestamps record as UTC. ---
-if [[ "${TZ:-}" != "UTC" ]]; then
-  red "[FAIL] TZ environment is '${TZ:-<unset>}' — must be 'UTC' to avoid leaking local timezone."
-  red "       Use 'make commit' / 'make deploy', or prefix with 'TZ=UTC '."
-  fail=1
-fi
+# Note: commit timestamp TZ is normalised to UTC by the post-commit hook
+# (.git/hooks/post-commit), so we no longer block on the TZ env here. The
+# scan above for non-UTC offsets in tracked file content still applies.
 
 # --- Git identity sanity check ---
 gn=$(git config user.name || true)
