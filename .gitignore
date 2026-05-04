@@ -1,0 +1,88 @@
+# --- Hugo build outputs ---
+/public/
+/resources/
+/.hugo_build.lock
+
+# --- Drafts (anything starting with _draft is never tracked) ---
+/content/**/_draft*
+/content/**/drafts/
+/content/_drafts/
+
+# --- Secrets, env, credentials ---
+.env
+.env.*
+*.env
+secrets/
+credentials/
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+id_ecdsa
+*.kdbx
+
+# --- IDE / editor noise (often contains username, paths) ---
+.idea/
+.vscode/
+*.code-workspace
+*.swp
+*.swo
+*~
+.history/
+.DS_Store
+Thumbs.db
+desktop.ini
+# VS Code "Front Matter" CMS extension state
+.frontmatter/
+frontmatter.json
+
+# --- OS / shell artifacts ---
+.bash_history
+.zsh_history
+.python_history
+.viminfo
+.lesshst
+nohup.out
+
+# --- Logs ---
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+
+# --- Local-only files (private notes, helper scripts, overrides) ---
+*.local.md
+*.local.sh
+*.local.toml
+hugo.local.toml
+config.local.toml
+.hugo.local.*
+# Local Makefile (one-key dev runner; keep private)
+/Makefile
+
+# --- Privacy deny-list (real identity strings live here, must never be tracked) ---
+scripts/.privacy-deny.local
+scripts/.privacy-deny*.local
+
+# --- Privacy check / scratch ---
+/scratch/
+/tmp/
+*.bak
+*.orig
+
+# --- Node (in case of any tooling) ---
+node_modules/
+package-lock.json
+yarn.lock
+
+# --- Claude Code per-project state (do not publish) ---
+.claude/
+
+# --- Misc binaries / archives that shouldn't end up tracked ---
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar

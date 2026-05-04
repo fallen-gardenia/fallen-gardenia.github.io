@@ -1,0 +1,41 @@
+{{- with site.Params.giscus -}}
+{{- if and .repo .repoId .category .categoryId -}}
+<div id="comments"></div>
+<noscript>JavaScript is required to view comments.</noscript>
+<script>
+  (function () {
+    function currentTheme() {
+      return document.body.classList.contains('dark') ? 'dark' : 'light';
+    }
+    var s = document.createElement('script');
+    s.src = 'https://giscus.app/client.js';
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.setAttribute('data-repo', {{ .repo | jsonify | safeJS }});
+    s.setAttribute('data-repo-id', {{ .repoId | jsonify | safeJS }});
+    s.setAttribute('data-category', {{ .category | jsonify | safeJS }});
+    s.setAttribute('data-category-id', {{ .categoryId | jsonify | safeJS }});
+    s.setAttribute('data-mapping', {{ (default "pathname" .mapping) | jsonify | safeJS }});
+    s.setAttribute('data-strict', {{ (default "1" .strict) | jsonify | safeJS }});
+    s.setAttribute('data-reactions-enabled', {{ (default "1" .reactionsEnabled) | jsonify | safeJS }});
+    s.setAttribute('data-emit-metadata', '0');
+    s.setAttribute('data-input-position', {{ (default "top" .inputPosition) | jsonify | safeJS }});
+    s.setAttribute('data-lang', {{ (default "en" .lang) | jsonify | safeJS }});
+    s.setAttribute('data-loading', 'lazy');
+    s.setAttribute('data-theme', currentTheme());
+    document.getElementById('comments').appendChild(s);
+
+    // Sync giscus theme whenever PaperMod changes the body class
+    // (covers both manual toggle and OS-driven changes).
+    new MutationObserver(function () {
+      var f = document.querySelector('iframe.giscus-frame');
+      if (!f) return;
+      f.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: currentTheme() } } },
+        'https://giscus.app'
+      );
+    }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  })();
+</script>
+{{- end -}}
+{{- end -}}

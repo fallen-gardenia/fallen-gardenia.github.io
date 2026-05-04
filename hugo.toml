@@ -1,0 +1,133 @@
+baseURL = "https://fallen-gardenia.github.io/"
+title = "Notes"
+theme = "PaperMod"
+
+defaultContentLanguage = "en"
+hasCJKLanguage = false
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+# Privacy: avoid leaking any third-party data and local git metadata.
+disableHugoGeneratorInject = true
+enableEmoji = true
+enableGitInfo = false
+pygmentsUseClasses = true
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[pagination]
+  pagerSize = 10
+
+[languages.en]
+  label = "English"
+  weight = 1
+
+[params]
+  env = "production"
+  description = "Notes"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowToc = true
+  TocOpen = false
+  ShowRssButtonInSectionTermList = true
+  comments = true
+  hidemeta = false
+  hideSummary = false
+  ShowFullTextinRSS = false
+  DateFormat = "2006-01-02"
+
+  [params.homeInfoParams]
+    Title = "Notes"
+    Content = "Some unimportant words."
+
+  [params.assets]
+    disableHLJS = true
+    disableFingerprinting = false
+
+  [params.label]
+    text = "Notes"
+
+  # Giscus comments. Activates only when repo + ID fields are non-empty.
+  # Get IDs from https://giscus.app after enabling Discussions on the repo
+  # and installing the giscus app (https://github.com/apps/giscus).
+  [params.giscus]
+    repo = "fallen-gardenia/fallen-gardenia.github.io"
+    repoId = "R_kgDOSTh-_g"
+    category = "Comments"
+    categoryId = "DIC_kwDOSTh-_s4C8SK6"
+    mapping = "pathname"
+    strict = "1"
+    reactionsEnabled = "1"
+    inputPosition = "bottom"
+    lang = "en"
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    lineNos = false
+    noClasses = false
+    style = "monokai"
+  [markup.goldmark.renderer]
+    unsafe = false
+
+[[menu.main]]
+  identifier = "archives"
+  name = "Archives"
+  url = "/archives/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 30
+
+# Strip Hugo's built-in third-party privacy hazards.
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.x]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = true
+
+[services]
+  [services.disqus]
+    shortname = ""
+  [services.googleAnalytics]
+    ID = ""
